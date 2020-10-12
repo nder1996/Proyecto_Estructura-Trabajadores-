@@ -3,52 +3,73 @@ import re
 import os
 
 
-Votantes=[];Lider_V=[]
+Votantes=[];Lugar_V=[];
 
 def BaseD(DatosV):
    #Si Hay Algun Error
    #except NameError:
    try:
-       Votantes = open("DVotantes.txt", "a")
-       Votantes.write("%s"%(DatosV))
-       Votantes.write('\n')
+       Votantes = open("DVotantes.txt", "a+")
+       Votantes.write("%s\n"%(DatosV))
        Votantes.close()
    except:
      print("Error Al Llenar Los Datos Al Archivo")
 
 def InvBase():
-    #Si Hay Algun Error
-    #except NameError:
     try:
-      linea=None
+      linea="";i=0
       DatosV = open("DVotantes.txt","r")
+      print("\n")
       for linea in DatosV.readlines():
-         Votantes.append(linea)
+         TData(linea,"",0,2,0)
       DatosV.close()
     except:
-      print("Error Al Almacenar Los Datos Al Archivo") 
+      print("Error Al Almacenar Los Datos Al Archivo")
+      
+def TData(L_Data,Data,i,a,j):
+      for j in range(4):
+         while L_Data[i]!="-":
+           if i>=a:
+              Data=Data+L_Data[i]
+           i+=1
+         if L_Data[i]=="-":
+          Votantes.append(Data)
+          Data=""
+          a = a+1 ; i = i+5
 
+def D_Comprobar(L_Data,Data,Bandera):
+   i=1;Max=int(len(Votantes)/4)
+   for i in range(Max):
+      if Data == Votantes[i]:
+            return True
+            break
+      i+=4
+   return False
+          
 def ValidadorC(Variable,Tipo):
-    Busq = re.search(r'[\d]',Variable)
+    Busq1 = re.search(r'[\d]',Variable)
+    #Busq2 = re.search(r'[\d]',Variable)
+    #[A-Z]'
     if Tipo==1:
-       if Busq==None:
+       if Busq1==None:
         os.system ("cls")
         print("------------------------------------------------") 
         print("Ingrese Solo Numeros Para Llenar Este Campo")
         print("----------------------------------------------\n") 
         IngresarD()
     if Tipo==0:
-        if Busq!=None:
+        if Busq1!=None:
           os.system ("cls")
           print("----------------------------------------------") 
           print("Ingrese Solo Letras Para Llenar Este Campo")
           print("--------------------------------------------\n") 
           IngresarD()
 
-def GuardarD(Nombre,Apellido,Cedula,Cedula_l):
+def GuardarD(Nombre,Apellido,Cedula,Cedula_l,DatosV):
   Nombre=Nombre+"-";Apellido=Apellido+"-";Cedula=Cedula+"-";Cedula_l=Cedula_l+"-"
-  Votantes.append(Nombre);Votantes.append(Apellido);Votantes.append(Cedula);Votantes.append(Cedula_l); 
-  BaseD(Votantes)
+  DatosV.append(Cedula);DatosV.append(Cedula_l);DatosV.append(Apellido);DatosV.append(Nombre);
+  print("DATOS DE VOTANTE : ",DatosV);
+  BaseD(DatosV) 
 
 def MostrarD():
     print("\nNombre               : ",Votantes[0]);print("\nApellido             : ",Votantes[1]);print("\n# De Cedula          : ",Votantes[2]);print("\n# Cedula De Su Lider : ",Votantes[3])
@@ -65,46 +86,28 @@ def BuscarV(Cedula):
       print("Error Al Buscar Los Datos Al Archivo") 
 
 def IngresarD():    
-   Nombre  = input("\nIngrese Su Nombre    : ")
-   ValidadorC(Nombre,0);
-   Apellido= input("\nIngrese Su Apellido  : ")
-   ValidadorC(Apellido,0);
+   DatosV=[];Bandera=True
    Cedula = input("\nIngrese Su # Cedula  : ")
-   Cedula = Cedula.replace(" ", "")
-   ValidadorC(Cedula,1);
-   Cedula_l= input("\nIngrese El # Cedula De Su Lider : ")
-   Cedula_l= Cedula_l.replace(" ", "")
-   ValidadorC(Cedula_l,1);
-   GuardarD(Nombre,Apellido,Cedula,Cedula_l)
+   Cedula = Cedula.replace(" ", "");ValidadorC(Cedula,1)
+   if D_Comprobar(Votantes,Cedula,Bandera)==False:
+      Nombre  = input("\nIngrese Su Nombre    : ")
+      ValidadorC(Nombre,0);
+      Apellido= input("\nIngrese Su Apellido  : ")
+      ValidadorC(Apellido,0);
+      Cedula_l= input("\nIngrese El # Cedula De Su Lider : ")
+      Cedula_l= Cedula_l.replace(" ", "");ValidadorC(Cedula_l,1);
+      Lugar_v = input("\n Ingrese Su Lugar De Votacion : ")
+      
+      GuardarD(Nombre,Apellido,Cedula,Cedula_l)
+   else:
+      os.system ("cls")
+      print("-----------------------------------------------------------") 
+      print("Usuario Ya Registrado , Por Favor Ingrese Otro # De Cedula")
+      print("----------------------------------------------------------\n") 
+      IngresarD()
    
-
-
+   
 InvBase()
 IngresarD()
 
-
-
-#Dato=None;TDatos(Dato)
-#IngresarD()
-#BaseD(["1081827159","0000012345","ANDERSONS","AREVALO MADRID"])
-#DatosV=[]
-#InvBase()
-#print("VOTANTES : ",Votantes[0])
-#i=2;Nombre=""
-"""
-while Votantes[0][i]!="-":
-   Nombre = str(Nombre) + str(Votantes[0][i])
-   i+=1
-
-Apellido="";i+=5
-while Votantes[0][i]!="-":
-   Apellido = str(Apellido) + str(Votantes[0][i])
-   i+=1
-
-print("Apellido : ",len(Apellido));
-#print("Eliminado N : ",Votantes)
-"""
-
-
-#BuscarV("1081827159")
 
