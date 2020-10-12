@@ -48,21 +48,20 @@ def D_Comprobar(L_Data,Data,Bandera):
           
 def ValidadorC(Variable,Tipo):
     Busq1 = re.search(r'[\d]',Variable)
-    #Busq2 = re.search(r'[\d]',Variable)
-    #[A-Z]'
+    Busq2 = re.search("[A-Za-z]",Variable)
     if Tipo==1:
        if Busq1==None:
         os.system ("cls")
-        print("------------------------------------------------") 
-        print("Ingrese Solo Numeros Para Llenar Este Campo")
-        print("----------------------------------------------\n") 
+        print("----------------------------------------------------------------") 
+        print("Ingrese Solo Numeros [DEL 0 HASTA EL 9] Para Llenar Este Campo")
+        print("----------------------------------------------------------------\n") 
         IngresarD()
     if Tipo==0:
-        if Busq1!=None:
+        if Busq2==None:
           os.system ("cls")
-          print("----------------------------------------------") 
-          print("Ingrese Solo Letras Para Llenar Este Campo")
-          print("--------------------------------------------\n") 
+          print("----------------------------------------------------------------") 
+          print("Ingrese Solo Letras [DE LA A HASTA EL Z] Para Llenar Este Campo")
+          print("----------------------------------------------------------------\n") 
           IngresarD()
 
 def GuardarD(Nombre,Apellido,Cedula,Cedula_l,DatosV):
