@@ -95,3 +95,11 @@ if Busq1!=None:
       print("LETRA")
 else:
       print("NUMERO")
+
+
+      linea=""
+      """
+      for linea in DatosL.readlines():
+         TData(linea,"",0,2,0)
+      DatosV.close() 
+      """

@@ -1,31 +1,41 @@
 import string
+import pdb
 import re
 import os
 
 
-Votantes=[];Lugar_V=[];
+Votantes=[];L_V=[];
 
-def BaseD(DatosV):
-   #Si Hay Algun Error
-   #except NameError:
+def BaseD(DatosV,DatosL):
    try:
        Votantes = open("DVotantes.txt", "a+")
+       Lugar    = open("DLugar.txt", "a+")
        Votantes.write("%s\n"%(DatosV))
+       Lugar.write("%s\n"%(DatosL))
        Votantes.close()
+       Lugar.close()
    except:
      print("Error Al Llenar Los Datos Al Archivo")
 
 def InvBase():
-    try:
-      linea="";i=0
-      DatosV = open("DVotantes.txt","r")
-      print("\n")
+   linea="";i=0
+   DatosV = open("DVotantes.txt","r")
+   DatosL = open("DLugar.txt","r")
+   try:
       for linea in DatosV.readlines():
          TData(linea,"",0,2,0)
       DatosV.close()
-    except:
-      print("Error Al Almacenar Los Datos Al Archivo")
-      
+      linea=""
+      for linea in DatosL.readlines():
+         TData(linea,"",0,2,0)
+      DatosL.close()
+   except:
+      """
+          print("--------------------------") 
+          print("No Hay Datos Disponibles")
+          print("--------------------------\n") 
+      """
+
 def TData(L_Data,Data,i,a,j):
       for j in range(4):
          while L_Data[i]!="-":
@@ -47,7 +57,7 @@ def D_Comprobar(L_Data,Data,Bandera):
    return False
           
 def ValidadorC(Variable,Tipo):
-    Busq1 = re.search(r'[\d]',Variable)
+    Busq1 = re.search('[0-9]',Variable)
     Busq2 = re.search("[A-Za-z]",Variable)
     if Tipo==1:
        if Busq1==None:
@@ -64,11 +74,11 @@ def ValidadorC(Variable,Tipo):
           print("----------------------------------------------------------------\n") 
           IngresarD()
 
-def GuardarD(Nombre,Apellido,Cedula,Cedula_l,Ciudad_V,Lugar_V,Mesa_V,Puesto_V,DatosV):
+def GuardarD(Nombre,Apellido,Cedula,Cedula_l,Ciudad_V,Lugar_V,Mesa_V,Puesto_V,DatosV,DatosL):
   Nombre=Nombre+"-";Apellido=Apellido+"-";Cedula=Cedula+"-";Cedula_l=Cedula_l+"-";Ciudad_V=Ciudad_V+"-";Lugar_V=Lugar_V+"-";Mesa_V=Mesa_V+"-";Puesto_V=Puesto_V+"-"
-  DatosV.append(Cedula);DatosV.append(Cedula_l);DatosV.append(Apellido);DatosV.append(Nombre);;DatosV.append(Nombre);
-  
-  BaseD(DatosV) 
+  DatosV.append(Cedula);DatosV.append(Cedula_l);DatosV.append(Apellido);DatosV.append(Nombre);DatosV.append(Nombre);
+  DatosL.append(Cedula);DatosL.append(Lugar_V);DatosL.append(Puesto_V);DatosL.append(Mesa_V);DatosL.append(Mesa_V);
+  BaseD(DatosV,DatosL) 
 
 def MostrarD():
     print("\n")
@@ -88,7 +98,7 @@ def BuscarV(Cedula):
       print("Error Al Buscar Los Datos Al Archivo") 
 
 def IngresarD():    
-   DatosV=[];Bandera=True
+   DatosV=[];DatosL=[];Bandera=True
    Cedula = input("\nIngrese Su # Cedula  : ")
    Cedula = Cedula.replace(" ", "");ValidadorC(Cedula,1)
    if D_Comprobar(Votantes,Cedula,Bandera)==False:
@@ -98,15 +108,15 @@ def IngresarD():
       ValidadorC(Apellido,0);
       Cedula_l= input("\nIngrese El # Cedula De Su Lider : ")
       Cedula_l= Cedula_l.replace(" ", "");ValidadorC(Cedula_l,1);
-      Ciudad_V = input("\n Ingrese Su Ciudad Que Le Corresponde : ")
+      Ciudad_V = input("\nIngrese Su Ciudad Que Le Corresponde : ")
       ValidadorC(Ciudad_V,0);
-      Lugar_V = input("\n Ingrese Su Lugar De Votacion : ")
+      Lugar_V = input("\nIngrese Su Lugar De Votacion : ")
       ValidadorC(Lugar_V,0);
-      Mesa_V = input("\n Ingrese El # De la Mesa Correspondiente : ")
+      Mesa_V = input("\nIngrese El # De la Mesa Correspondiente : ")
       ValidadorC(Mesa_V,1);
-      Puesto_V = input("\n Ingrese El # De la Mesa Correspondiente : ")
+      Puesto_V = input("\nIngrese El # De la Mesa Correspondiente : ")
       ValidadorC(Mesa_V,1);
-      GuardarD(Nombre,Apellido,Cedula,Cedula_l,Ciudad_V,Lugar_V,Mesa_V,Puesto_V,DatosV)
+      GuardarD(Nombre,Apellido,Cedula,Cedula_l,Ciudad_V,Lugar_V,Mesa_V,Puesto_V,DatosV,DatosL)
    else:
       os.system ("cls")
       print("-----------------------------------------------------------") 
@@ -115,12 +125,13 @@ def IngresarD():
       IngresarD()
    
 
- 
- 
    
 InvBase()
 
-MostrarD()
+IngresarD()
+
+
+#MostrarD()+
 
 
 #IngresarD()
