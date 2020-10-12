@@ -64,14 +64,17 @@ def ValidadorC(Variable,Tipo):
           print("----------------------------------------------------------------\n") 
           IngresarD()
 
-def GuardarD(Nombre,Apellido,Cedula,Cedula_l,DatosV):
-  Nombre=Nombre+"-";Apellido=Apellido+"-";Cedula=Cedula+"-";Cedula_l=Cedula_l+"-"
-  DatosV.append(Cedula);DatosV.append(Cedula_l);DatosV.append(Apellido);DatosV.append(Nombre);
-  print("DATOS DE VOTANTE : ",DatosV);
+def GuardarD(Nombre,Apellido,Cedula,Cedula_l,Ciudad_V,Lugar_V,Mesa_V,Puesto_V,DatosV):
+  Nombre=Nombre+"-";Apellido=Apellido+"-";Cedula=Cedula+"-";Cedula_l=Cedula_l+"-";Ciudad_V=Ciudad_V+"-";Lugar_V=Lugar_V+"-";Mesa_V=Mesa_V+"-";Puesto_V=Puesto_V+"-"
+  DatosV.append(Cedula);DatosV.append(Cedula_l);DatosV.append(Apellido);DatosV.append(Nombre);;DatosV.append(Nombre);
+  
   BaseD(DatosV) 
 
 def MostrarD():
-    print("\nNombre               : ",Votantes[0]);print("\nApellido             : ",Votantes[1]);print("\n# De Cedula          : ",Votantes[2]);print("\n# Cedula De Su Lider : ",Votantes[3])
+    print("\n")
+    print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~") 
+    print("Nombre               : ",Votantes[3]);print("\nApellido             : ",Votantes[4]);print("\n# De Cedula          : ",Votantes[0]);print("\n# Cedula De Su Lider : ",Votantes[1])
+    print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
     print("\n")
 
 def BuscarV(Cedula):
@@ -95,9 +98,15 @@ def IngresarD():
       ValidadorC(Apellido,0);
       Cedula_l= input("\nIngrese El # Cedula De Su Lider : ")
       Cedula_l= Cedula_l.replace(" ", "");ValidadorC(Cedula_l,1);
-      Lugar_v = input("\n Ingrese Su Lugar De Votacion : ")
-      
-      GuardarD(Nombre,Apellido,Cedula,Cedula_l)
+      Ciudad_V = input("\n Ingrese Su Ciudad Que Le Corresponde : ")
+      ValidadorC(Ciudad_V,0);
+      Lugar_V = input("\n Ingrese Su Lugar De Votacion : ")
+      ValidadorC(Lugar_V,0);
+      Mesa_V = input("\n Ingrese El # De la Mesa Correspondiente : ")
+      ValidadorC(Mesa_V,1);
+      Puesto_V = input("\n Ingrese El # De la Mesa Correspondiente : ")
+      ValidadorC(Mesa_V,1);
+      GuardarD(Nombre,Apellido,Cedula,Cedula_l,Ciudad_V,Lugar_V,Mesa_V,Puesto_V,DatosV)
    else:
       os.system ("cls")
       print("-----------------------------------------------------------") 
@@ -105,8 +114,15 @@ def IngresarD():
       print("----------------------------------------------------------\n") 
       IngresarD()
    
+
+ 
+ 
    
 InvBase()
-IngresarD()
+
+MostrarD()
+
+
+#IngresarD()
 
 
