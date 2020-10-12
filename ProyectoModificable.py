@@ -10,8 +10,8 @@ def BaseD(DatosV,DatosL):
    try:
        Votantes = open("DVotantes.txt", "a+")
        Lugar    = open("DLugar.txt", "a+")
-       Votantes.write("%s\n"%(DatosV))
-       Lugar.write("%s\n"%(DatosL))
+       Votantes.write("%s"%(DatosV))
+       Lugar.write("%s"%(DatosL))
        Votantes.close()
        Lugar.close()
    except:
