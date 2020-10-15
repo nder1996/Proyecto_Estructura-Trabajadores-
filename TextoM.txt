@@ -103,3 +103,375 @@ else:
          TData(linea,"",0,2,0)
       DatosV.close() 
       """
+
+
+
+
+      Votantes = open("Prueba.txt","r")
+S = [] ; i=0 ; Dato=""
+  os.system("cls")
+  print("\n")
+  Data = Votantes.read()
+  Votantes.close()
+
+  a=0;b=Data.find(" ")
+  S.append(Data[a:b])
+for
+
+
+
+
+
+
+
+print(Data.strip(Data[a:b]))
+
+
+print("VOTANTES : ",len(Data[a:b]))
+
+print(Data[14])
+
+
+
+"""
+S.append(Data[a:b])
+Data = Data.strip(Data[])
+print(Data.strip(Data[a:b+2]))
+"""
+
+
+
+
+for i in range (len(Data)):
+ if c == 0 :
+       Nuevo=Nuevo+Data[i]
+       #print("[i] : ",i,"DATA : ",Data[i]) 
+    if Data[i]=="-" or Data[i]==" ": 
+       c=c+1;
+    if c==3:
+        #print("NUEVO : ",Nuevo);
+        Nuevo=""
+        c=0    
+
+
+
+
+
+
+
+
+for i in range (len(Data)):
+    if Data[i]==" " and Data[i+1]!="-" and Data[i+1]!="*" :
+       Nuevo=Nuevo+" "
+    if (Data[i]!="-") and (Data[i]!=" "):
+       Nuevo=Nuevo+Data[i]
+    elif Data[i]=="-" or Data[i]==" ": 
+       c=c+1;
+    if c==3:
+        print("NUEVO : ",Nuevo);
+        Nuevo=""
+        c=0;            
+
+
+
+
+
+
+
+
+                  Nuevo=Nuevo+Data[i]
+             #print("NUEVO #1 : ",Nuevo)
+             Nuevo=""
+        elif re.search( "[A-Za-z]",Data[i])==None:
+           #D_V.append(Nuevo)
+           print("NUEVO #2 : ",Nuevo)
+           Nuevo=""
+
+
+
+
+
+
+
+           for i in range (len(Data)):
+    if Data[i].isdigit()==True:
+        Nuevo=Nuevo+Data[i]
+    else:
+        if re.search( "[A-Za-z]",Data[i])==None:
+            
+            D_V.append(Nuevo)
+            Nuevo=""
+            #print(re.search( "[A-Za-z]",Data[i]))
+   
+
+
+#for i in range(len(D_V)):
+  #  if D_V[i]=="-":
+     #   D_V[i] = D_V[i].replace("-","")
+
+
+
+
+
+
+
+
+
+
+
+#Data =Data.strip(Data[0:Data.find("-")])
+#print("[a:b]#2 : ",Data[0:b])
+
+
+
+    
+
+
+#S = "ABC DEF"
+
+#S = S.remove("A")
+
+
+
+#while Data[i]!="*":
+#   if (Data[i]==" " and Data[i+1]=="-" and Data[i+2]==" "):
+#            #Nuevo = Nuevo + Data[]
+#            print("Gaurdado:",Nuevo)
+#            D_V.append(Nuevo)
+#            Nuevo=""
+#    else:
+#            Nuevo = Nuevo + Data[i]
+#           #print("DATA1 : ",Nuevo)         
+#    i+=1  
+#    print("DATA[I] : ",Data[i])
+    
+    
+             
+                  
+#for i in range(len(D_V)):  
+#    D_V[i]= D_V[i].replace("-","")
+#    D_V[i]= D_V[i].replace(" ","")
+
+
+            
+#print("Nuevo #1 :",D_V)        
+            
+
+#print("VALOR DE LEN : ",len(D_V))
+
+
+
+
+
+def TData(L_Data,Data,i,a,j):
+      for j in range(4):
+         while L_Data[i]!="-":
+           if i>=a:
+              Data=Data+L_Data[i]
+           i+=1
+         if L_Data[i]=="-":
+          Votantes.append(Data)
+          Data=""
+          a = a+1 ; i = i+5
+
+
+
+
+
+
+
+//////////////////////////////////////////////////////////
+
+
+import string
+import re
+import os
+import sys
+
+
+V1 = ""; V2 = "";k=0;Votantes=[];
+
+V1    = open("Prueba.txt","r") 
+V2 = V1.readlines()
+V1.close() 
+   
+
+while k<=len(V2):
+    Datos=""; Com =""; i=0 ;j=0
+    Datos = V2[0]
+    while i<=2:
+       while Datos[j]!="-":
+          Com = Com + Datos[j]
+          j+=1
+       Com = Com.replace(" ","")
+       Votantes.append(Com)
+       Com="";i+=1;j+=1
+    if len(Votantes)%3==0:
+       Com = ""
+       Com = Datos[j:Datos.find("*")]
+       Com = Com.replace(" ","")
+       Votantes.append(Com)
+    k+=1  
+ 
+print("Actualizacion : ",Votantes)  
+
+
+
+
+
+
+
+
+
+/////////////////////////////////////////////////////////////////////
+
+
+
+V1    = open("Prueba.txt","r") 
+for V2 in V1.readline():
+    if V2!="-":
+       Data = Data + V2
+    else:
+        print("-----------")
+        print("VOTANTES : ",Data)
+        Data=""
+     
+        
+        
+print("VALOR DE V2 : ",len(V2))        
+V1.close() 
+   
+   
+   
+   
+   
+   
+   
+   
+***************************************************************
+
+import string
+import re
+import os
+import sys
+
+
+
+V1 = "" ; V2 = "" ; k=0 ; linea=""
+Votantes=[]
+Data = ""
+
+V1 = open("Prueba.txt",'r')
+for linea in V1.read():   
+   if linea!="-":
+      Data = Data + linea
+   else:
+       print("DATA : ",Data)
+       Data=""
+ 
+ 
+#print("----",linea) 
+V1.close()
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+/////////////////////////////////////////////////////////////   
+   
+import string
+import re
+import os
+import sys
+
+
+
+
+
+
+
+
+V1 = "" ; V2 = "" ; k=0 ; linea="" ; i=0 ; j=0
+
+
+Votante=[] ; Com_Votantes=[]
+
+Data = ""
+V1 = open("Prueba.txt",'r')
+
+for linea in V1.read():   
+   if linea!="-" or linea!="\n" or linea!=" ":
+      if (re.search( "[A-Za-z]",linea)!=None) or (linea.isnumeric()==True):
+           Data = Data + linea
+   if linea==" ":
+          if Data!="":
+             Com_Votantes.append(Data)
+             Data = ""
+   if linea=="*":
+      Com_Votantes.append("*")
+
+V1.close()
+
+
+
+
+D1_Votantes = dict();
+Data=""
+
+os.system ("cls")
+
+while i<=len(Com_Votantes)-1:
+     if i!=2+j and i!=3+j and i<=4+j:
+         Votante.append(Com_Votantes[i+j])
+     if i==2+j:
+         Votante.append(Com_Votantes[2+j]+" "+Com_Votantes[3+j])
+     if i==5:
+           D1_Votantes[]
+           j+=6;
+     i+=1
+
+ 
+print("->",Votante)
+#print("----",linea) 
+V1.close()
+      
+   
+   
+   
+   
+   
+   
+   
+   
+      i = 0 ; j = 0 ; Datos_V = []  
+    Datos_V = Inv_BaseD(Datos_V)
+    print("VALOR DE LEN : ",len(Datos_V) )
+    while i<len(Datos_V):
+     if i!=2+j and i!=3+j and i<=4+j:
+         #Votantes.append(Datos_V[i+j])
+         print("[",i,"]",Datos_V[i+j])
+     if i==2+j:
+         #Votantes.append(Datos_V[2+j]+" "+Datos_V[3+j])
+         print("[i+2] ",Datos_V[2+j]+" "+Datos_V[3+j])
+     if i==4+j:
+           j+=5;
+     i+=1
+   
+   
+   
+   
+   
+
+
+
+
+
+
+
+            
