@@ -6,6 +6,10 @@ import os
 
 Votantes=[];L_V=[];
 
+D1_Votantes = dict();
+
+
+
 def BaseD(DatosV,DatosL):
    DatosV=DatosV+'\n';DatosL=DatosL+'\n'
    try:
@@ -18,22 +22,51 @@ def BaseD(DatosV,DatosL):
    except:
      print("Error Al Llenar Los Datos Al Archivo")
 
-def InvBase():
-   DatosV = open("DVotantes.txt","r")
-   DatosL = open("DLugar.txt","r")
-   Data1="";Data2=""
-   try:
-       Data1 = DatosV.read();Data2 = DatosL.read()
-       Data1.close();Data2.close()
-       
-   except:
-      """
+def Inv_BaseD(Lista):  
+    V1= "";Data="";linea=""; V1 = open("DVotantes.txt",'r');
+    try:
+        for linea in V1.read():   
+           if linea!="-" or linea!="\n" or linea!=" ":
+               if (re.search( "[A-Za-z]",linea)!=None) or (linea.isnumeric()==True):
+                  Data = Data + linea
+           if linea==" ":
+              if Data!="":
+                 Lista.append(Data)
+                 Data = ""
+           if linea=="*":
+              Lista.append("*") 
+        V1.close()
+        return Lista
+    except:
           print("--------------------------") 
           print("No Hay Datos Disponibles")
           print("--------------------------\n") 
-      """
+          
+def BaseD_L():
+    i = None; j = 0
+    Datos_V = []; Data = ""; Datos_V = Inv_BaseD(Datos_V) ; Votantes=[]
+    for i in Datos_V:
+      if i != "*" and j!=2 and j!=3:
+          Votantes.append(i)
+      elif j==2 or j==3:
+           if j==2:
+               Data = i +" "
+           if j==3:
+              Data = Data + i
+              Votantes.append(Data)
+              Data=""
+      if i=="*":
+         j=-1
+      j+=1
+    return Votantes  
 
-def TData(L_Data,Data,i,a,j):
+def BaseD_Dicc():
+    Data = ""  ; Data = BaseD_L() ; a = 0 ;i=0
+    while i<int(len(Data)/4):
+       a=i*4;  
+       print("Cedula : ",Data[a]," Inf -> ",Data[a+1:a+4])
+       i+=1
+
       
 
 def D_Comprobar(L_Data,Data,Bandera):
@@ -122,8 +155,8 @@ def IngresarD():
       
    
 
-InvBase()
-print("VOTANTES : ",Votantes)
+
+print("VOTANTES : ",BaseD_L)
 
 IngresarD()
 

@@ -5,7 +5,6 @@ import sys
 
 
 
-
 D1_Votantes = dict();
 
 
@@ -43,22 +42,31 @@ def BaseD_L():
          j=-1
       j+=1
     return Votantes      
- 
     
 def BaseD_Dicc():
-    Data = ""  ; Data = BaseD_L() ; a = 0 ; b = 1 ; c = 4
-    os.system ("cls") 
-    for i in range(int(len(Data)/3)-1):
+    Data = ""  ; Data = BaseD_L() ; a = 0 ;i=0
+    #print("LEN : ",len(Data)/4)
+    while i<int(len(Data)/4):
        a=i*4;  
+       #D1_Votantes[Data[a]] = Data[a+1:a+4]
        #print("Cedula : ",Data[a]," Inf -> ",Data[a+1:a+4])
-       D1_Votantes[Data[a]] = Data[a+1:a+4]
-       
+       #print("{i} : ",i," {a} : ",a," {a+1} :",a+1," {a+4} :",a+4)
+       i+=1
        
        
 BaseD_Dicc()
 
-for i in D1_Votantes:
-    print ("Cedula : ",i, 'Datos - Inf -> : ', D1_Votantes[i])
+os.system("cls")
+
+#for i in D1_Votantes.keys():
+ #   print ("Cedula : ",i, 'Datos - Inf -> : ', D1_Votantes[i])
+ 
+ 
+Lista = []
+
+Lista.append("1");Lista.append("2");Lista.append("3");
+
+print(type(Lista.index("0")))
 
 
 
