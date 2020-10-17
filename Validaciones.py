@@ -48,7 +48,7 @@ def BaseD_Dicc():
     #print("LEN : ",len(Data)/4)
     while i<int(len(Data)/4):
        a=i*4;  
-       #D1_Votantes[Data[a]] = Data[a+1:a+4]
+       D1_Votantes[Data[a]] = Data[a+1:a+4]
        #print("Cedula : ",Data[a]," Inf -> ",Data[a+1:a+4])
        #print("{i} : ",i," {a} : ",a," {a+1} :",a+1," {a+4} :",a+4)
        i+=1
@@ -58,18 +58,19 @@ BaseD_Dicc()
 
 os.system("cls")
 
+print("\n")
+
 #for i in D1_Votantes.keys():
  #   print ("Cedula : ",i, 'Datos - Inf -> : ', D1_Votantes[i])
+
+
+#print("HOLA_Mundo : ",D1_Votantes.values(D1_Votantes[0]) )
  
  
-Lista = []
-
-Lista.append("1");Lista.append("2");Lista.append("3");
-
-print(type(Lista.index("0")))
 
 
-
+a = int("123456")
+print("int(a) : ",a," string(a) : ",str(a))
        
 
 

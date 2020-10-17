@@ -49,20 +49,28 @@ def BaseD_L():
         return Votantes  
     
 def BaseD_Dicc():
-    Data = BaseD_L()
-       Data = "" ; a = 0 ;i=0
-       while i<int(len(Data)/4):
-        a=i*4;
-        #print("Cedula : ",Data[a]," Inf -> ",Data[a+1:a+4])
-        D1_Votantes[Data[a]] = Data[a+1:a+4]
-        i+=1
-   for i in D1_Votantes.keys():
-      print ("Cedula : ",i, 'Datos - Inf -> : ', D1_Votantes[i])
+       Data = "" ; Data = BaseD_L()
+       a = 0 ;i=0
+       if Data!=None:
+          while i<int(len(Data)/4):
+            a=i*4;
+            D1_Votantes[Data[a]] = Data[a+1:a+4]
+            i+=1
+
+def GuardarDicc(Nombre,Apellido,Cedula,Cedula_l,Ciudad_V,Lugar_V,Mesa_V,Puesto_V):
+  Votantes_D = []; Votantes_L =[];
+  Votantes_D.append(Cedula);Votantes_D.append(Cedula_l);Votantes_D.append(Apellido);Votantes_D.append(Nombre);
+  D1_Votantes[Votantes_D[0]] = Votantes_D[1:4]
+  Votantes_D.clear()
+  #Votantes_D = Cedula + " - " + Cedula_l + " - " + Apellido + " - " + Nombre +   " * "
+  #Votantes_L = Cedula + " - " + Lugar_V +  " - " + Puesto_V + " - " + Mesa_V   + " - " + Ciudad_V + " * "
+  #BaseD(Votantes_D,Votantes_L)
 
 def ValidadorC(Variable,Tipo):
  if Tipo==1:
       if Variable.isdigit()==False:
          os.system ("cls")
+         print("\n")
          print("----------------------------------------------------------------") 
          print("Ingrese Solo Numeros [DEL 0 HASTA EL 9] Para Llenar Este Campo")
          print("----------------------------------------------------------------\n") 
@@ -72,38 +80,62 @@ def ValidadorC(Variable,Tipo):
       for i in range(len(Variable)):
          if re.search( "[A-Za-z]",Variable[i])==None:
             os.system ("cls")
+            print("\n")
             print("----------------------------------------------------------------") 
             print("Ingrese Solo Letras [DE LA A HASTA EL Z] Para Llenar Este Campo")
             print("----------------------------------------------------------------\n") 
             IngresarD()
 
+def Q_Espacio(Letra):  
+   L1 = Letra.find(" ")+1
+   L2 = (Letra.count(" ")+L1)-1
+   if Letra.count(" ")>1:
+      N1 = Letra[0:L1]; N2 = Letra[L2:len(Letra)]
+      Letra=""; 
+      Letra = N1+N2
+   return Letra
+
 def IngresarD():
    BaseD_Dicc()
-  # Cedula = input("\nIngrese Su # Cedula  : ")
+   print("\n")
+   Cedula = input("\nIngrese Su # Cedula  : ")
    ValidadorC(Cedula,1)
-   if D1_Votantes.has_key(Cedula)==False:
-       print("Hola_Mundo")
-   #if D1_Votantes.has_key(Cedula)==False or D1_Votantes.has_key(Cedula)==None:
-  #    Nombre    = input("\nIngrese Su Nombre    : ")
-  #    S_Espacio = Nombre.replace(" ", "");ValidadorC(S_Espacio,0);S_Espacio="";Nombre=Q_Espacio(Nombre)
-  #    Apellido  = input("\nIngrese Su Apellido  : ")
-  #    S_Espacio = Apellido.replace(" ", "");ValidadorC(S_Espacio,0);S_Espacio="";Apellido=Q_Espacio(Apellido)
-  #    Cedula_l  = input("\nIngrese El # Cedula De Su Lider : ")
-  #    Cedula_l  = Cedula_l.replace(" ", "");ValidadorC(Cedula_l,1);
-  #    Ciudad_V  = input("\nIngrese Su Ciudad Que Le Corresponde : ")
-  #    S_Espacio = Ciudad_V.replace(" ", "");ValidadorC(S_Espacio,0);S_Espacio="";Ciudad_V=Q_Espacio(Ciudad_V)
-  #    Lugar_V   = input("\nIngrese Su Lugar De Votacion : ")
-  #    S_Espacio = Lugar_V.replace(" ", "");ValidadorC(S_Espacio,0);S_Espacio="";Lugar_V=Q_Espacio(Lugar_V)
-  #    Mesa_V    = input("\nIngrese El # De la Mesa Correspondiente : ");ValidadorC(Mesa_V,1);
-  #    Puesto_V  = input("\nIngrese El # Del Puesto Correspondiente : ");ValidadorC(Puesto_V,1);
-  #    GuardarD(Nombre,Apellido,Cedula,Cedula_l,Ciudad_V,Lugar_V,Mesa_V,Puesto_V)
-  ## else:
-   #   os.system ("cls")
-   #   sys.stdout.flush()
-   #   print("-----------------------------------------------------------") 
-   #   print("Usuario Ya Registrado , Por Favor Ingrese Otro # De Cedula")
-   #   print("----------------------------------------------------------\n")     
-    
+   Encontrado = Cedula in D1_Votantes
+   if Encontrado == False:
+      Nombre    = input("\nIngrese Su Nombre    : ");Prueba = Nombre.replace(" ", "")
+      Nombre=Q_Espacio(Nombre);ValidadorC(Prueba,0) ; Prueba = ""
+      Apellido  = input("\nIngrese Su Apellido  : ");Prueba = Apellido.replace(" ", "")
+      Apellido=Q_Espacio(Apellido);ValidadorC(Prueba,0); 
+      Cedula_l  = str(input("\nIngrese El # Cedula De Su Lider : "))
+      Cedula_l  = ValidadorC(Cedula_l,1);
+      print("CEDULA DEL LIDER : ",Cedula_l,"\n");Prueba = ""
+      Ciudad_V  = input("\nIngrese Su Ciudad Que Le Corresponde : ");Prueba = Ciudad_V.replace(" ", "")
+      Ciudad_V=Q_Espacio(Ciudad_V);ValidadorC(Prueba,0)  
+      Lugar_V   = input("\nIngrese Su Lugar De Votacion : ");Prueba = ""
+      ValidadorC(Prueba,0);Lugar_V=Q_Espacio(Lugar_V);Prueba = Lugar_V.replace(" ", "")
+      Mesa_V    = input("\nIngrese El # De la Mesa Correspondiente : ");ValidadorC(Mesa_V,1);
+      Puesto_V  = input("\nIngrese El # Del Puesto Correspondiente : ");ValidadorC(Puesto_V,1);
+      GuardarDicc(Nombre,Apellido,str(Cedula),str(Cedula_l),Ciudad_V,Lugar_V,str(Mesa_V),str(Puesto_V))
+   else:
+       print("-----------------------------------------------------------") 
+       print("Usuario Ya Registrado , Por Favor Ingrese Otro # De Cedula")
+       print("----------------------------------------------------------\n")
+       IngresarD()
+
+
+
+def BaseD(DatosV,DatosL):
+   DatosV=DatosV+'\n';DatosL=DatosL+'\n'
+   try:
+       Votantes = open("DVotantes.txt","a+")
+       Lugar    = open("DLugar.txt","a+")
+       Votantes.write(DatosV)
+       Lugar.write(DatosL)
+       Votantes.close()
+       Lugar.close()
+   except:
+     print("Error Al Llenar Los Datos Al Archivo")
+
 def Menu():
     Opcion = ""
     print ("\n");
@@ -120,7 +152,6 @@ def Menu():
     Opcion = input("Ingrese El Numero Correspondiente Para Continuar : ")
         
 
- 
-
-
 IngresarD()
+
+

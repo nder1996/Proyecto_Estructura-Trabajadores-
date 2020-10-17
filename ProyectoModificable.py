@@ -67,8 +67,7 @@ def BaseD_Dicc():
        print("Cedula : ",Data[a]," Inf -> ",Data[a+1:a+4])
        i+=1
 
-      
-
+     
 def D_Comprobar(L_Data,Data,Bandera):
    i=1;Max=int(len(Votantes)/4)
    for i in range(Max):
