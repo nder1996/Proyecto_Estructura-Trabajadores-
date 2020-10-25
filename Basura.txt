@@ -1,0 +1,257 @@
+ """"if (re.search('[A-Za-z]',string[i])!=None):
+     if string[i].isspace():
+        Data = Data + " "
+        print("DATA ESPACIO EN BLANCO : ",Data)
+     else:
+         Data = Data + string[i]
+  if string[i]=="-":
+     print("DATA : ",Data)
+     Data = ""
+""""
+import string
+import os
+import re
+
+
+
+Votantes = open("DVotantes.txt","a+")
+#for D1,D2 in BDicc.items():
+   #Votantes.write(clave,valor)
+   #Data1 = str(D1)
+   #Data2 = str(D2)
+   #print (Data2)
+Votantes.close()
+
+string ="1081827158-','-Arevalo Madrid-','-Andersons-*";
+Data=""
+
+for i in range(len(string)):
+  if string[i]==" ":
+      Data = Data + " "
+  if re.search('[A-Za-z]',string[i])!=None:
+      Data = Data + string[i]
+  if string[i]=="-":
+      print("Data : ",Data)
+      Data = ""
+      i+=1
+  if string[i].isdigit()==True:
+      Data = Data + string[i]
+      
+    
+    
+
+#\W: cualquier carácter no alfanumérico.
+#\S: cualquier carácter que no sea un espacio en blanco
+
+
+
+for key in BDicc:
+  print (key, ":", BDicc[key])
+  
+
+
+
+
+
+
+
+BDicc = {
+     "1081827159":['1081827158-','-Arevalo Madrid-','-Andersons-*'],
+     "1081827150":['1081827155-','-Areva Madr-','Ander-*'],
+     "1081827158":['1081827154-','-Arevalo Mad-','Anderplk-*'],
+     "1081827157":['1081827150-','-Arevaj Madr-','Andermj-*']  
+}
+
+string ="1081827158-','-Arevalo Madrid-','-Andersons-*";
+Data=""
+
+for i in range(len(string)):
+  if string[i]==" ":
+      Data = Data + " "
+  if re.search('[A-Za-z]',string[i])!=None:
+      Data = Data + string[i]
+  if string[i]=="-":
+      print("Data : ",Data)
+      Data = ""
+      i+=1
+  if string[i].isdigit()==True:
+      Data = Data + string[i]
+      
+
+
+
+   Votantes = open("DVotantes.txt","a+")
+   for D1,D2 in BDicc.items():
+     #Votantes.write(clave,valor)
+     #Data1 = str(D1)
+     #Data2 = str(D2)
+     #print (Data2)
+Votantes.close()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+""""
+
+string ="1081827158-','-Arevalo Madrid-','-Andersons-*";
+Data=""
+
+for i in range(len(string)):
+  if string[i]==" ":
+      Data = Data + " "
+  if re.search('[A-Za-z]',string[i])!=None:
+      Data = Data + string[i]
+  if string[i]=="-":
+      print("Data : ",Data)
+      Data = ""
+      i+=1
+  if string[i].isdigit()==True:
+      Data = Data + string[i]
+      
+""""
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+BDicc = {
+     "1081827159":['1081827158-','-Arevalo Madrid-','-Andersons-'],
+     "1081827150":['1081827155-','-Areva Madr-','Ander-'],
+     "1081827158":['1081827154-','-Arevalo Mad-','Anderplk-'],
+     "1081827157":['1081827150-','-Arevaj Madr-','Andermj-']  
+}
+
+
+
+
+
+
+
+
+
+
+
+    if Linea[i]==" ":
+      Data = Data + " "
+    if re.search('[A-Za-z]',Linea[i])!=None:
+      Data = Data + Linea[i]
+    if Linea[i]=="-":
+        if Data!=" ":
+           if Data[0]==" ":
+               Data = Data[1:]
+           D_V = D_V + "-" + Data
+           
+           Data = ""
+           i+=1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   def Text_Dicc():
+        
+   
+    
+  def Entrada(self):
+      Votantes = open("DVotantes.txt","a+")
+      Lugares    = open("DLugar.txt","a+")  
+      try:
+          Votantes.close()
+          Lugares.close()
+       except:
+          print("------------------------------------------") 
+          print("No Hay Datos Disponibles Para Actualizar")
+          print("-----------------------------------------\n") 
+                
+   def Salida(self):
+       Votantes = open("DVotantes.txt","r+")
+       Lugares  = open("DLugar.txt","r+")  
+       try:
+          Votantes.close()
+          Lugares.close()
+       except:
+          print("------------------------------------------") 
+          print("No Hay Datos Disponibles Para Actualizar")
+          print("-----------------------------------------\n") 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
